@@ -76,8 +76,9 @@ function getNewPasswords() {
 
 // Copy the password
 function copyPassword(el) {
+    // console.log(true)
     let pwEl = document.getElementById(el.id)
-    let text = console.log(pwEl.textContent)
+    let text = pwEl.textContent
     navigator.clipboard.writeText(text)
     
     // pwToBeCopied = pwEl.textContent
