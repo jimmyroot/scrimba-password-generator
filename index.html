@@ -1,0 +1,26 @@
+<html>
+    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1>Generate a</h1>
+        <h1>random password</h1>
+        <div>
+            <input id="input-length" onchange="setPasswordLength()" type="number" value="15" min="8" max="20"></div>
+        </div>
+        <div>
+        <label for="check-upp">Upper case</label>
+        <input id="check-upp" onchange="setAvailableTypes()" type="checkbox">
+        <label for="check-upp">Numbers</label>
+        <input id="check-num" onchange="setAvailableTypes()" type="checkbox">
+        <label for="check-upp">Special Characters</label>
+        <input id="check-spec" onchange="setAvailableTypes()" type="checkbox">
+        </div>
+        <div>
+        <button onclick="getNewPasswords()">Generate passwords</button>
+        </div>
+        <div id="password-1-el" onclick="copyPassword(this)"></div>
+        <div id="password-2-el" onclick="copyPassword(this)"></div>
+        <script src="index.js"></script>
+    </body>
+</html>
