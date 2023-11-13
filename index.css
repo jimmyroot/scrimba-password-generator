@@ -1,3 +1,92 @@
 body {
+    font-family: Inter, sans-serif;
+    background: #1C1C1C;
+    margin: 0;
+    
+}
+
+h1 {
+    font-family: Karla, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 40px;
+    letter-spacing: -1px;
     margin: 0;
 }
+
+h1 span {
+    color: #7C3AED;
+}
+
+h3 {
+    margin: 10px 0 0 0;
+    color: #6B7280;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+#container-main {
+    box-sizing: border-box;
+    background: #F9FAFB;
+    border-radius: 6px;
+    width: 550px;
+    margin: 20px auto;
+    padding: 115px 52px 52px 52px;
+}
+
+#container-controls-1 {
+    margin: 30px 0 0 0;
+    display: flex;
+}
+
+#container-controls-2 {
+    display: flex;
+    padding: 25px 0;
+    justify-content: space-between;
+}
+
+.spacer {
+    border-bottom: 1px solid #D5D4D8;
+}
+
+#container-pw-length {
+    margin: auto auto;
+}
+
+#container-passwords {
+    display: flex;
+    justify-content: space-between;
+}
+
+#lbl-length {
+    margin: 0 0 0 5px;
+}
+
+.display-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #18FFBA;
+    margin: 30px 0;
+    width: 211px;
+    height: 39px;
+    border-radius: 6px;
+    background: #280D52;
+}
+
+button {
+    color: white;
+    background-color: #7C3AED;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    border: none;
+    border-radius: 6px;
+    letter-spacing: 0.5;
+    padding: 9px 17px;
+    /* box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); */
+}
+

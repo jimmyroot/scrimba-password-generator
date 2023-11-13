@@ -20,6 +20,8 @@ let upper = true
 let number = true
 let special = true
 let availableCharTypes = []
+let pw1 = null
+let pw2 = null
 
 /* Create a pool of available characters depending on the users selections.
 Lower case is the minimum */
@@ -80,7 +82,13 @@ function copyPassword(el) {
     let pwEl = document.getElementById(el.id)
     let text = pwEl.textContent
     navigator.clipboard.writeText(text)
-    
+    pwEl.textContent = "Copied to clipboard..."
+
+    timer = setInterval(function() {
+        pwEl.textContent = text
+        clearInterval(timer)
+    }, 1500)
+
     // pwToBeCopied = pwEl.textContent
     // navigator.clipboard.writeText(pwToBeCopied)
 }

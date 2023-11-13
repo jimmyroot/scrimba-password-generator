@@ -1,26 +1,51 @@
 <html>
-    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <head>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Karla?family=Karla:wght@800" rel="stylesheet">
         <link rel="stylesheet" href="index.css">
     </head>
-    <body>
-        <h1>Generate a</h1>
-        <h1>random password</h1>
-        <div>
-            <input id="input-length" onchange="setPasswordLength()" type="number" value="15" min="8" max="20"></div>
+    <body>  
+        <div id="container-main">
+            <h1>Generate a <br /><span id="header-alt-color">random password</span></h1>
+            <h3>Never use an insecure password again.</h3>
+            <div id="container-controls">
+                <div id="container-controls-1">
+                    <div>
+                        <button onclick="getNewPasswords()">Generate passwords</button>
+                    </div>
+                </div>
+                
+                <div id="container-controls-2">
+                    <div>
+                        <input id="input-length" onchange="setPasswordLength()" type="number" value="15" min="8" max="20">
+                        <label id="lbl-length" for="input-length">Length</label>
+                    </div>
+                    <div>
+                        <input class="ctl-checkbox" id="check-upp" onchange="setAvailableTypes()" type="checkbox">
+                        <label for="check-upp">Upper case</label>
+                    </div>
+                    <div>
+                        <input class="ctl-checkbox" id="check-num" onchange="setAvailableTypes()" type="checkbox">
+                        <label for="check-upp">Numbers</label>
+                    </div>
+                    <div>
+                        <input class="ctl-checkbox" id="check-spec" onchange="setAvailableTypes()" type="checkbox">
+                        <label for="check-upp">Special</label>
+                    </div>
+                    
+                </div>
+                <div class="spacer"></div>
+                
+            
+            </div>
+            <div id="container-passwords">
+                <div class="display-password" id="password-1-el" onclick="copyPassword(this)"></div>
+                <div class="display-password" id="password-2-el" onclick="copyPassword(this)"></div>
+            </div>
         </div>
-        <div>
-        <label for="check-upp">Upper case</label>
-        <input id="check-upp" onchange="setAvailableTypes()" type="checkbox">
-        <label for="check-upp">Numbers</label>
-        <input id="check-num" onchange="setAvailableTypes()" type="checkbox">
-        <label for="check-upp">Special Characters</label>
-        <input id="check-spec" onchange="setAvailableTypes()" type="checkbox">
-        </div>
-        <div>
-        <button onclick="getNewPasswords()">Generate passwords</button>
-        </div>
-        <div id="password-1-el" onclick="copyPassword(this)"></div>
-        <div id="password-2-el" onclick="copyPassword(this)"></div>
         <script src="index.js"></script>
     </body>
 </html>
