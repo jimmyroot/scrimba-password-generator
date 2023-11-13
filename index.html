@@ -1,6 +1,5 @@
 <html>
     <head>
-        
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
@@ -8,40 +7,33 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>  
-        <div id="container-main">
-            <h1>Generate a <br /><span id="header-alt-color">random password</span></h1>
-            <h3>Never use an insecure password again.</h3>
-            <div id="container-controls">
-                <div id="container-controls-1">
-                    <div>
-                        <button onclick="getNewPasswords()">Generate passwords</button>
-                    </div>
-                </div>
-                
-                <div id="container-controls-2">
+        <div class="container-main">
+            <h1>Generate a <span class="header-alt-color">random password</span></h1>
+            <p>Never use an insecure password again.</p>
+            <div class="container-controls">
+                <div class="container-controls-2">
                     <div>
                         <input id="input-length" onchange="setPasswordLength()" type="number" value="15" min="8" max="20">
-                        <label id="lbl-length" for="input-length">Length</label>
+                        <label for="input-length" class="lbl-length">Length</label>
                     </div>
                     <div>
-                        <input class="ctl-checkbox" id="check-upp" onchange="setAvailableTypes()" type="checkbox">
-                        <label for="check-upp">Upper case</label>
+                        <input class="ctl-checkbox" id="check-upp" onchange="updateCharPool()" type="checkbox">
+                        <label for="check-upp">Uppercase</label>
                     </div>
                     <div>
-                        <input class="ctl-checkbox" id="check-num" onchange="setAvailableTypes()" type="checkbox">
-                        <label for="check-upp">Numbers</label>
+                        <input class="ctl-checkbox" id="check-num" onchange="updateCharPool()" type="checkbox">
+                        <label for="check-num">Numbers</label>
                     </div>
                     <div>
-                        <input class="ctl-checkbox" id="check-spec" onchange="setAvailableTypes()" type="checkbox">
-                        <label for="check-upp">Special</label>
+                        <input class="ctl-checkbox" id="check-spec" onchange="updateCharPool()" type="checkbox">
+                        <label for="check-spec">Special</label>
                     </div>
-                    
                 </div>
-                <div class="spacer"></div>
-                
-            
+                <div class="container-controls-1">
+                    <button onclick="getNewPasswords()">Generate passwords</button>
+                </div>
             </div>
-            <div id="container-passwords">
+            <div class="container-passwords">
                 <div class="display-password" id="password-1-el" onclick="copyPassword(this)"></div>
                 <div class="display-password" id="password-2-el" onclick="copyPassword(this)"></div>
             </div>

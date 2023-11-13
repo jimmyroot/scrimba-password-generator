@@ -16,22 +16,19 @@ const password1El = document.getElementById("password-1-el")
 const password2El = document.getElementById("password-2-el")
 
 let pwLength = 15
-let availableCharTypes = []
-let upper = true
-let number = true
-let special = true
+let charPool = []
 let pw1 = null
 let pw2 = null
 
-// Create a pool of available characters depending on the users selections.
-// Lower case is the minimum and will always be present. 
-// Call this function once at the bottom to get things started
-function setAvailableTypes() {
-    let newTypes = [charsLow]
-    if (checkUpp.checked) newTypes.push(charsUpp)
-    if (checkNum.checked) newTypes.push(charsNum)
-    if (checkSpec.checked) newTypes.push(charsSpec)
-    availableCharTypes = newTypes // Not sure this is the best way to do this? Am I copying the array or just the reference/pointer?
+// Create a pool of available characters depending on the users selections...
+// Lower case is the minimum and will always be present...
+// Call this function once at the bottom to get things started...
+function updateCharPool() {
+    let newTypes = [...charsLow]
+    if (checkUpp.checked) newTypes.push(...charsUpp)
+    if (checkNum.checked) newTypes.push(...charsNum)
+    if (checkSpec.checked) newTypes.push(...charsSpec)
+    charPool = [...newTypes]
 }
 
 // Called on change of input-length element
@@ -61,11 +58,10 @@ function fixInputLength() {
 // Generate a password based on the configured length and avaiable characters...we don't have to do
 // much work here as we already built the arr of available types
 function generatePassword() {
-    var pw = ""
+    let pw = ""
 
     for (let i = 0; i < pwLength; i++) {
-        randCharType = availableCharTypes[Math.floor(Math.random() * availableCharTypes.length)]
-        randChar = randCharType[Math.floor(Math.random() * randCharType.length)]
+        randChar = charPool[Math.floor(Math.random() * charPool.length)]
         pw += randChar
     }
 
@@ -84,15 +80,25 @@ function getNewPasswords() {
 function copyPassword(el) {
     let pwEl = document.getElementById(el.id)
     let text = pwEl.textContent
-    navigator.clipboard.writeText(text)
 
-    // Let the user know we copied successfully, wait 1.5 secs and revert to pw
-    pwEl.textContent = "Copied to clipboard..."
+    // Check to see if a password was generated, if not (!text.length > 0) display a message 
+    if (text.length > 0) {
+        navigator.clipboard.writeText(text)
 
-    timer = setInterval(function() {
-        pwEl.textContent = text
-        clearInterval(timer)
-    }, 1500)
+        // Let the user know we copied successfully, wait 1.5 secs and revert to pw
+        pwEl.textContent = "Copied to clipboard..."
+
+        timer = setInterval(function() {
+            pwEl.textContent = text
+            clearInterval(timer)
+        }, 1500)
+    } else {
+        pwEl.textContent = "Generate a password!"
+        timer = setInterval(function() {
+            pwEl.textContent = ""
+            clearInterval(timer)
+        }, 1500)
+    }
 }
 
 // Call once to populate availableTypes arr
