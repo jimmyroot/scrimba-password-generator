@@ -1,29 +1,31 @@
 const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9","~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?",
 "/"];
 
+// Split up array into 4 arrays by char type
 const charsUpp = characters.slice(characters.indexOf("A"), characters.indexOf('a'))
 const charsLow = characters.slice(characters.indexOf("a"), characters.indexOf('0'))
 const charsNum = characters.slice(characters.indexOf("0"), characters.indexOf('~'))
 const charsSpec = characters.slice(characters.indexOf("~"), characters.length)
 
+// Init els, vars
 const checkUpp = document.getElementById("check-upp")
 const checkNum = document.getElementById("check-num")
 const checkSpec = document.getElementById("check-spec")
 const inputLength = document.getElementById("input-length")
-
 const password1El = document.getElementById("password-1-el")
 const password2El = document.getElementById("password-2-el")
 
 let pwLength = 15
+let availableCharTypes = []
 let upper = true
 let number = true
 let special = true
-let availableCharTypes = []
 let pw1 = null
 let pw2 = null
 
 // Create a pool of available characters depending on the users selections.
-// Lower case is the minimum 
+// Lower case is the minimum and will always be present. 
+// Call this function once at the bottom to get things started
 function setAvailableTypes() {
     let newTypes = [charsLow]
     if (checkUpp.checked) newTypes.push(charsUpp)
@@ -34,9 +36,10 @@ function setAvailableTypes() {
 
 // Called on change of input-length element
 function setPasswordLength() {
-    // If user leaves the field empty and tabs out we can re-populate with current length
+    // If user leaves the field empty and tabs out we can re-populate with current length,
+    // else we end up with password of length '0' (I guess using a slider would of removed this issue)
     if (inputLength.value === "") inputLength.value = pwLength;
-    // Check validity (I think? At least google said so!) set length if valid, if invalid fix it
+    // Check validity, update pwLength if valid, if invalid fix it
     (inputLength.checkValidity()) ? pwLength = inputLength.value : fixInputLength()
 }
 
@@ -92,4 +95,5 @@ function copyPassword(el) {
     }, 1500)
 }
 
+// Call once to populate availableTypes arr
 setAvailableTypes()
